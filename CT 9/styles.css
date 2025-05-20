@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.learning-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.display-area {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#targetImage {
+    width: 200px;
+    height: 200px;
+    border: 3px solid #4CAF50;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+#drawingCanvas {
+    border: 3px solid #2196F3;
+    border-radius: 10px;
+    background-color: white;
+    cursor: crosshair;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+}
+
+button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+#checkButton {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#clearButton {
+    background-color: #f44336;
+    color: white;
+}
+
+#nextButton {
+    background-color: #2196F3;
+    color: white;
+}
+
+#score {
+    font-size: 1.5rem;
+    color: #4CAF50;
+    margin-top: 0.5rem;
+} 

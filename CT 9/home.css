@@ -1,0 +1,503 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Baloo 2', cursive;
+    background: url('image/8218622.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    padding-bottom: 100px; /* Add padding for footer */
+}
+
+/* Container for main content */
+.main-content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 45px;
+    border-radius: 22.5px;
+    width: 95%;
+    max-width: 900px;
+    position: relative;
+    animation: modalFadeIn 0.5s ease-out;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    transform: scale(1.5);
+}
+
+@keyframes modalFadeIn {
+    from {opacity: 0; transform: translateY(-45px) scale(1.5);}
+    to {opacity: 1; transform: translateY(0) scale(1.5);}
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 48px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 15px;
+}
+
+.close:hover {
+    color: #000;
+}
+
+.modal-content h2 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 42px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.modal-content p {
+    margin-bottom: 45px;
+    color: #444;
+    font-size: 27px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.modal-content button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 22.5px 45px;
+    border-radius: 37.5px;
+    cursor: pointer;
+    font-size: 27px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    display: block;
+}
+
+.modal-content button:hover {
+    background-color: #ff1493;
+}
+
+/* Footer styles */
+footer {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 40px 20px;
+    width: 100%;
+    box-shadow: 0 -10px 20px rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.footer-section h3 {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.footer-section p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.footer-section p i {
+    margin-right: 10px;
+    color: #ff69b4;
+}
+
+.social-links {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+.social-icon {
+    color: #666;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #ff69b4;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+    color: #ff69b4;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.newsletter-form button {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: #ff1493;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.footer-bottom p {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Add Font Awesome styles */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css');
+
+/* Feedback Button */
+#feedbackBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+#feedbackBtn:hover {
+    background-color: #ff1493;
+    transform: translateY(-2px);
+}
+
+#feedbackBtn i {
+    font-size: 20px;
+}
+
+/* Feedback Modal */
+#feedbackModal .modal-content {
+    width: 90%;
+    max-width: 500px;
+    padding: 40px;
+}
+
+#feedbackModal h2 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group select {
+    appearance: none;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center;
+    padding-right: 30px;
+}
+
+#feedbackForm button[type="submit"] {
+    background-color: #ff69b4;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto 0;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+#feedbackForm button[type="submit"]:hover {
+    background-color: #ff1493;
+}
+
+/* Responsive adjustments for feedback modal */
+@media (max-width: 480px) {
+    #feedbackBtn {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    
+    #feedbackBtn i {
+        font-size: 18px;
+    }
+    
+    #feedbackModal .modal-content {
+        padding: 30px 20px;
+    }
+    
+    .form-group textarea {
+        min-height: 80px;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .footer-section h3 {
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+/* Make the logo image bigger and add a zoom animation */
+.logo {
+    width: 80%;
+    max-width: 960px;
+    animation: logoZoom 1.5s ease-out;
+}
+
+@keyframes logoZoom {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+h1 {
+    margin-bottom: 32px;
+    font-size: 8rem;
+    color: #333;
+    text-shadow: 3.2px 3.2px 6.4px rgba(0, 0, 0, 0.2);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Speech bubble with fade-in animation */
+.speech-bubble {
+    position: relative;
+    background: #fff;
+    padding: 32px;
+    border-radius: 16px;
+    animation: bubbleFade 2s ease-in-out;
+    box-shadow: 0 6.4px 12.8px rgba(0,0,0,0.1);
+    max-width: 80%;
+    margin-bottom: 64px;
+    font-size: 1.76rem;
+    top: -80px;
+}
+
+@keyframes bubbleFade {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Updated dialogue arrow styling: arrow pointing upward */
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 24px solid transparent;
+    border-bottom-color: #fff;
+}
+
+.get-started-btn {
+    background-color: #ff69b4;
+    color: #fff;
+    border: none;
+    border-radius: 80px;
+    padding: 24px 48px;
+    font-size: 1.92rem;
+    cursor: pointer;
+    box-shadow: 0 6.4px 12.8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    margin: 20px auto;
+}
+
+.get-started-btn:hover {
+    background-color: #ff85c0;
+    transform: translateY(-4.8px);
+}
+
+/* Desktop Layout Styles for 2nd.html */
+.container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.column {
+    width: 50%;
+    padding: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.learn-section {
+    background: linear-gradient(135deg, #ffe6f2, #ffd6e8);
+    color: #4d004d;
+}
+
+.draw-section {
+    background: linear-gradient(135deg, #e6f9ff, #ccf2ff);
+    color: #004d66;
+}
+
+.column h2 {
+    font-size: 4.8rem;
+    margin-bottom: 32px;
+}
+
+.column p {
+    font-size: 1.92rem;
+    margin-top: 32px;
+    max-width: 80%;
+}
+
+.action-btn {
+    background-color: #ff69b4;
+    border: none;
+    border-radius: 80px;
+    color: #fff;
+    padding: 24px 48px;
+    font-size: 1.92rem;
+    cursor: pointer;
+    box-shadow: 0 6.4px 12.8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.learn-section .action-btn {
+    background-color: #ff85c0;
+}
+
+.draw-section .action-btn {
+    background-color: #66ccff;
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}

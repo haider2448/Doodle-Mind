@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎨 Doodle Mind</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <!-- Parental Warning Modal -->
+    <div id="warningModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>⚠️ Parental Guidance Warning ⚠️</h2>
+            <p>Children under 4 years old 👶 should use this website under parental guidance 👨‍👩‍👧‍👦.</p>
+            <button onclick="closeWarning()">I Understand 👍</button>
+        </div>
+    </div>
+
+    <!-- Main content container -->
+    <div class="main-content">
+        <!-- Replaced text logo with enlarged image logo -->
+        <img src="image/doodle_minds-removebg-preview%20(1).png" alt="Doodle Mind Logo" class="logo">
+        
+        <!-- Speech bubble moved above the Get Started button -->
+        <div class="speech-bubble">
+            Welcome to Doodle Minds! Ready to draw something magical?
+        </div>
+        
+        <!-- Get Started button -->
+        <button class="get-started-btn" onclick="redirectTo2nd()">Get Started</button>
+    </div>
+
+    <!-- Feedback Button -->
+    <button id="feedbackBtn" onclick="openFeedbackModal()">
+        <i class="fas fa-comments"></i>
+        Feedback
+    </button>
+
+    <!-- Feedback Modal -->
+    <div id="feedbackModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Share Your Feedback</h2>
+            <form id="feedbackForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="rating">Rating:</label>
+                    <select id="rating" name="rating" required>
+                        <option value="">Select Rating</option>
+                        <option value="5">⭐⭐⭐⭐⭐ (5/5)</option>
+                        <option value="4">⭐⭐⭐⭐ (4/5)</option>
+                        <option value="3">⭐⭐⭐ (3/5)</option>
+                        <option value="2">⭐⭐ (2/5)</option>
+                        <option value="1">⭐ (1/5)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="feedback">Feedback:</label>
+                    <textarea id="feedback" name="feedback" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="issue">Report Issue:</label>
+                    <textarea id="issue" name="issue" rows="4" placeholder="Describe any issues you're experiencing..."></textarea>
+                </div>
+                <button type="submit">Submit Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        window.onload = function() {
+            var warningModal = document.getElementById("warningModal");
+            warningModal.style.display = "block";
+        }
+
+        function closeWarning() {
+            var warningModal = document.getElementById("warningModal");
+            warningModal.style.display = "none";
+            
+            // Play welcome message with female and male voices
+            const femaleText = "Welcome to Doodle Minds!";
+            const maleText = "Ready to draw something magical?";
+
+            // Create speech synthesis utterances
+            const utterance1 = new SpeechSynthesisUtterance(femaleText);
+            const utterance2 = new SpeechSynthesisUtterance(maleText);
+
+            // Find female and male voices
+            const voices = speechSynthesis.getVoices();
+            let femaleVoice = voices.find(voice => voice.name.includes("Microsoft Zira") || voice.name.includes("Google US English") && voice.name.includes("Female"));
+            let maleVoice = voices.find(voice => voice.name.includes("Microsoft David") || voice.name.includes("Google US English") && voice.name.includes("Male"));
+
+            if (femaleVoice) {
+                utterance1.voice = femaleVoice;
+            }
+            if (maleVoice) {
+                utterance2.voice = maleVoice;
+            }
+
+            // Set voice rates and pitches
+            utterance1.rate = 1.1;
+            utterance1.pitch = 1.1;
+            utterance2.rate = 1.1;
+            utterance2.pitch = 1.0;
+
+            // Queue the utterances
+            utterance1.onend = () => {
+                speechSynthesis.speak(utterance2);
+            };
+            
+            // Start speaking
+            speechSynthesis.speak(utterance1);
+        }
+
+        // Feedback Modal
+        function openFeedbackModal() {
+            document.getElementById("feedbackModal").style.display = "block";
+        }
+
+        function closeFeedbackModal() {
+            document.getElementById("feedbackModal").style.display = "none";
+        }
+
+        // Close feedback modal when clicking the X
+        var feedbackClose = document.getElementsByClassName("close")[1];
+        feedbackClose.onclick = function() {
+            closeFeedbackModal();
+        }
+
+        // Close feedback modal when clicking outside
+        window.onclick = function(event) {
+            var feedbackModal = document.getElementById("feedbackModal");
+            if (event.target == feedbackModal) {
+                closeFeedbackModal();
+            }
+        }
+
+        // Handle feedback form submission
+        document.getElementById("feedbackForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            alert("Thank you for your feedback! We'll review it soon.");
+            closeFeedbackModal();
+            this.reset();
+        });
+
+        // Close modal when clicking the X
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function() {
+            closeWarning();
+        }
+
+        // Original redirect function
+        function redirectTo2nd() {
+            window.location.href = "2nd.html";
+        }
+
+        // Wait for voices to be loaded
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = function() {
+                // Now voices are loaded
+            };
+        }
+    </script>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> Email: contact@doodleminds.com</p>
+                <p><i class="fas fa-phone"></i> Phone: +1 (555) 123-4567</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-links">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for updates and special offers!</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Doodle Minds. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
